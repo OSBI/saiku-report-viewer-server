@@ -7,11 +7,16 @@ import org.pentaho.reporting.engine.classic.core.MasterReport;
 import org.pentaho.reporting.engine.classic.core.modules.output.table.html.HtmlReportUtil;
 import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
 
-public class Server {
+public class ReportServerImpl implements ReportServer {
+  @Override
+  public String exportReportToHTML() throws Exception {
+    return "<html><body><h1>Hello World</h1></body></html>";
+  }
+
   public static void main(String[] args) throws Exception {
     ClassicEngineBoot.getInstance().start();
 
-    URL url = Main.class.getResource("/basic_sample.prpt");
+    URL url = ReportServerImpl.class.getResource("/basic_sample.prpt");
     ResourceManager mgr = new ResourceManager();
     MasterReport report = (MasterReport) mgr.createDirectly(url, MasterReport.class).getResource();
 

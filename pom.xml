@@ -76,7 +76,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.1</version>
         </dependency>
-
         <dependency>
             <groupId>pentaho</groupId>
             <artifactId>cpf-core</artifactId>
@@ -87,8 +86,6 @@
             <artifactId>pentaho-connections</artifactId>
             <version>2.2.1</version>
         </dependency>
-
-
         <dependency>
             <groupId>pentaho-library</groupId>
             <artifactId>libloader</artifactId>
@@ -134,8 +131,6 @@
             <artifactId>librepository</artifactId>
             <version>${pentaho.version}</version>
         </dependency>
-        <!-- -->
-
         <dependency>
             <groupId>pentaho-reporting-engine</groupId>
             <artifactId>pentaho-reporting-engine-classic-core</artifactId>
@@ -201,7 +196,6 @@
             <artifactId>pentaho-reporting-engine-legacy-charts</artifactId>
             <version>${pentaho.version}</version>
         </dependency>
-
         <dependency>
             <groupId>pentaho-kettle</groupId>
             <artifactId>kettle-core</artifactId>
@@ -212,7 +206,6 @@
             <artifactId>kettle-engine</artifactId>
             <version>${pentaho.kettle.version}</version>
         </dependency>
-
         <dependency>
             <groupId>pentaho</groupId>
             <artifactId>mondrian</artifactId>
@@ -248,7 +241,6 @@
             <artifactId>poi</artifactId>
             <version>3.1-FINAL</version>
         </dependency>
-
         <dependency>
             <groupId>pentaho</groupId>
             <artifactId>pentaho-metadata</artifactId>
@@ -320,12 +312,57 @@
             <artifactId>slf4j-jdk14</artifactId>
             <version>1.6.4</version>
         </dependency>
-
         <dependency>
             <groupId>net.sourceforge.jexcelapi</groupId>
             <artifactId>jxl</artifactId>
             <version>2.6.12</version>
         </dependency>
+
+        <!-- CXF related dependencies -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>3.1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+            <version>2.17.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+            <version>2.17.0</version>
+        </dependency>
     </dependencies>
 
+    <!-- Build workflow definitions -->
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!-- Plugin for creating an OSGi bundle from compilation classpath -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.0.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <manifestLocation>target/META-INF</manifestLocation>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Import-Package>*</Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
