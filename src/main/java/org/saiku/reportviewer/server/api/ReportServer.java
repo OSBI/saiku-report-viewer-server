@@ -8,6 +8,6 @@ import javax.ws.rs.Produces;
 public interface ReportServer {
   @GET
   @Path("/html")
-  @Produces("text/html")
+  @Produces("application/xml")
   String exportReportToHTML() throws Exception;
 }
