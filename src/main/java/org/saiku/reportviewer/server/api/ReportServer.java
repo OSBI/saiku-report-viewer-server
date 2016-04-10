@@ -21,5 +21,5 @@ public interface ReportServer {
   @GET
   @Path("/render")
   @Produces("text/html")
-  String render(String reportId, String outputFormat, Map<String, String> params) throws Exception;
+  String render(/*String reportId, String outputFormat, Map<String, String> params*/) throws Exception;
 }

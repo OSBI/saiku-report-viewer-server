@@ -17,7 +17,7 @@ public class ReportServerImpl implements ReportServer {
   private static File reportsRoot;
 
   @Override
-  public String render(String reportId, String outputFormat, Map<String, String> params) throws Exception {
+  public String render(/*String reportId, String outputFormat, Map<String, String> params*/) throws Exception {
     ClassicEngineBoot.getInstance().start();
 
     URL url = ReportServerImpl.class.getResource("/basic_sample.prpt");
@@ -33,6 +33,7 @@ public class ReportServerImpl implements ReportServer {
     bos.flush();
 
     return bos.toString();
+//    return "<html><body><h1>It Works</h1></body></html>";
   }
 
   @Override
