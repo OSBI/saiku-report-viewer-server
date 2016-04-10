@@ -337,6 +337,22 @@
                     </instructions>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.karaf.tooling</groupId>
+                <artifactId>karaf-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <!-- no startupFeatures -->
+                    <bootFeatures>
+                        <feature>google-guava</feature>
+                        <feature>pentaho</feature>
+                        <feature>pentaho-reporting</feature>
+                        <feature>pentaho-kettle</feature>
+                        <feature>pentaho-mondrian</feature>
+                    </bootFeatures>
+                    <!-- no installedFeatures -->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

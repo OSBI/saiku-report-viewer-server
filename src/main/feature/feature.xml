@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="saiku-report-viewer-server">
-    <feature name="saiku-report-viewer-server" description="Saiku Report Viewer Server" version="development-SNAPSHOT">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0">
+    <feature name="google-guava" version="1.0.0">
+        <bundle dependency="true">wrap:mvn:com.google.guava/guava/13.0.1</bundle>
+    </feature>
+    <feature name="pentaho" version="1.0.0">
+        <feature>google-guava</feature>
         <bundle dependency="true">wrap:mvn:pentaho/cpf-core/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho/pentaho-connections/2.2.1</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libloader/TRUNK-SNAPSHOT</bundle>
@@ -12,6 +16,10 @@
         <bundle dependency="true">wrap:mvn:pentaho-library/libdocbundle/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libxml/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/librepository/TRUNK-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-reporting" version="1.0.0">
+        <feature>google-guava</feature>
+        <feature>pentaho</feature>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-core/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-scripting/TRUNK-SNAPSHOT</bundle>
@@ -25,9 +33,18 @@
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-toc/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-wizard-core/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-legacy-charts/TRUNK-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-kettle" version="1.0.0">
+        <feature>google-guava</feature>
+        <feature>pentaho-reporting</feature>
         <bundle dependency="true">wrap:mvn:pentaho-kettle/kettle-core/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-kettle/kettle-engine/TRUNK-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-mondrian" version="1.0.0">
+        <feature>google-guava</feature>
+        <feature>pentaho</feature>
+        <feature>pentaho-reporting</feature>
+        <feature>pentaho-kettle</feature>
         <bundle dependency="true">wrap:mvn:pentaho/mondrian/3.2.0.13658</bundle>
-        <bundle dependency="true">wrap:mvn:com.google.guava/guava/13.0.1</bundle>
     </feature>
 </features>
