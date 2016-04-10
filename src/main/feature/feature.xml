@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="saiku-report-viewer-server">
+    <feature name="saiku-report-viewer-server" description="Saiku Report Viewer Server" version="development-SNAPSHOT">
+        <bundle dependency="true">wrap:mvn:pentaho/cpf-core/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho/pentaho-connections/2.2.1</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libloader/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libbase/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libserializer/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libformula/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libfonts/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libformat/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libdocbundle/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libxml/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/librepository/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-core/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-scripting/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-drill-down/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-cda/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-mondrian/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-olap4j/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-pmd/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-kettle/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-xpath/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-toc/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-wizard-core/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-legacy-charts/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-kettle/kettle-core/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-kettle/kettle-engine/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho/mondrian/3.2.0.13658</bundle>
+        <bundle dependency="true">wrap:mvn:com.google.guava/guava/13.0.1</bundle>
+    </feature>
+</features>

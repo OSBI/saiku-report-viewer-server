@@ -11,7 +11,6 @@ import org.pentaho.reporting.engine.classic.core.modules.output.table.html.HtmlR
 import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
 
 import javax.activation.DataHandler;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.core.Response;
 
 public class ReportServerImpl implements ReportServer {
