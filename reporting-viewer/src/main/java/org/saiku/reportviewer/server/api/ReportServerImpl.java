@@ -21,7 +21,7 @@ public class ReportServerImpl implements ReportServer {
   public String render(/*String reportId, String outputFormat, Map<String, String> params*/) throws Exception {
     byte[] reportBytes = IOUtils.toByteArray(ReportServerImpl.class.getResourceAsStream("/basic_sample.prpt"));
 
-    ClassicEngineBoot.getInstance().start();
+    //ClassicEngineBoot.getInstance().start();
 
     ResourceManager mgr = new ResourceManager();
 

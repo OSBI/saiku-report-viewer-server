@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <features name="saiku-report-viewer-server" xmlns="http://karaf.apache.org/xmlns/features/v1.3.0">
-    <feature name="google-guava">
+    <!--<feature name="google-guava">
         <bundle dependency="true">wrap:mvn:com.google.guava/guava/13.0.1</bundle>
     </feature>
     <feature name="pentaho">
@@ -46,5 +46,7 @@
         <feature>pentaho-reporting</feature>
         <feature>pentaho-kettle</feature>
         <bundle dependency="true">wrap:mvn:pentaho/mondrian/3.2.0.13658</bundle>
-    </feature>
+    </feature>-->
+
+
 </features>

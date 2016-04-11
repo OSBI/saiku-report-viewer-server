@@ -16,6 +16,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.saiku</groupId>
+            <artifactId>saiku-report-viewer-server</artifactId>
+            <version>development-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <pluginManagement>
