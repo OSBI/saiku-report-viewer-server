@@ -111,6 +111,41 @@
             <version>${pentaho.version}</version>
         </dependency>
         <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>libserializer</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>libformula</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>libfonts</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>libformat</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>libdocbundle</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>libxml</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>librepository</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.0.1</version>
