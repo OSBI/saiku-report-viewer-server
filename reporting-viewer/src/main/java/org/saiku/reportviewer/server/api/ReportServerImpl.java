@@ -1,6 +1,7 @@
 package org.saiku.reportviewer.server.api;
 
 import java.io.*;
+
 import java.net.URL;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class ReportServerImpl implements ReportServer {
 
     ClassicEngineBoot.getInstance().start();
 
-
+    final URL url = ReportServerImpl.class.getResource("/basic_sample.prpt");
 
     ResourceManager mgr = new ResourceManager();
 
@@ -41,11 +42,11 @@ public class ReportServerImpl implements ReportServer {
     mgr.registerLoader(new ClassloaderResourceLoader());
     mgr.registerLoader(new ZipResourceLoader());
 
-    mgr.registerFactory(new PropertiesResourceFactory());
+    /*mgr.registerFactory(new PropertiesResourceFactory());
     mgr.registerFactory(new DrawableResourceFactory());
-    mgr.registerFactory(new ImageResourceFactory());
+    mgr.registerFactory(new ImageResourceFactory());*/
 
-    MasterReport report = (MasterReport) mgr.createDirectly(reportBytes, MasterReport.class).getResource();
+    MasterReport report = (MasterReport) mgr.createDirectly(url, MasterReport.class).getResource();
 
     ByteArrayOutputStream bos = new ByteArrayOutputStream();
     PrintStream ps = new PrintStream(bos, true);

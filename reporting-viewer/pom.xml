@@ -106,6 +106,11 @@
             <version>${pentaho.version}</version>
         </dependency>
         <dependency>
+            <groupId>pentaho-reporting-engine</groupId>
+            <artifactId>pentaho-reporting-engine-classic-extensions</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
             <groupId>pentaho-library</groupId>
             <artifactId>libbase</artifactId>
             <version>${pentaho.version}</version>
@@ -136,13 +141,38 @@
             <version>${pentaho.version}</version>
         </dependency>
         <dependency>
+            <groupId>pentaho-reporting-engine</groupId>
+            <artifactId>pentaho-reporting-engine-classic-extensions-drill-down</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-reporting-engine</groupId>
+            <artifactId>pentaho-reporting-engine-classic-extensions-scripting</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-reporting-engine</groupId>
+            <artifactId>pentaho-reporting-engine-legacy-charts</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
             <groupId>pentaho-library</groupId>
             <artifactId>libxml</artifactId>
             <version>${pentaho.version}</version>
         </dependency>
         <dependency>
+            <groupId>pentaho-reporting-engine</groupId>
+            <artifactId>pentaho-reporting-engine-classic-extensions-toc</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
             <groupId>pentaho-library</groupId>
             <artifactId>librepository</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-reporting-engine</groupId>
+            <artifactId>pentaho-reporting-engine-wizard-core</artifactId>
             <version>${pentaho.version}</version>
         </dependency>
         <dependency>
