@@ -25,26 +25,34 @@ import javax.ws.rs.core.Response;
 
 public class ReportServerImpl implements ReportServer {
   private static File reportsRoot;
-
+  ResourceManager mgr;
+  public void init(){
+    ClassicEngineBoot.getInstance().start();
+    mgr = new ResourceManager();
+    mgr.registerDefaults();
+  }
   @Override
   public String render(/*String reportId, String outputFormat, Map<String, String> params*/) throws Exception {
     byte[] reportBytes = IOUtils.toByteArray(ReportServerImpl.class.getResourceAsStream("/basic_sample.prpt"));
 
-    ClassicEngineBoot.getInstance().start();
+
 
     final URL url = ReportServerImpl.class.getResource("/basic_sample.prpt");
 
-    ResourceManager mgr = new ResourceManager();
 
-    mgr.registerLoader(new URLResourceLoader());
+   /* mgr.registerLoader(new URLResourceLoader());
     mgr.registerLoader(new FileResourceLoader());
     mgr.registerLoader(new RawResourceLoader());
     mgr.registerLoader(new ClassloaderResourceLoader());
     mgr.registerLoader(new ZipResourceLoader());
 
-    /*mgr.registerFactory(new PropertiesResourceFactory());
+    //mgr.registerDefaults();
+    mgr.registerFactory(new PropertiesResourceFactory());
     mgr.registerFactory(new DrawableResourceFactory());
     mgr.registerFactory(new ImageResourceFactory());*/
+
+
+
 
     MasterReport report = (MasterReport) mgr.createDirectly(url, MasterReport.class).getResource();
 

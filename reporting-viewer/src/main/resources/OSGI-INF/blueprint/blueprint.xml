@@ -20,7 +20,8 @@
         </jaxrs:serviceBeans>
     </jaxrs:server>
 
-    <bean id="saikuReportViewerServiceBean" class="org.saiku.reportviewer.server.api.ReportServerImpl"/>
+    <bean id="saikuReportViewerServiceBean" class="org.saiku.reportviewer.server.api.ReportServerImpl"
+          init-method="init"/>
 
 
 </blueprint>

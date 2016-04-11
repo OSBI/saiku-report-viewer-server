@@ -20,6 +20,72 @@
             <groupId>org.saiku</groupId>
             <artifactId>saiku-report-viewer-server</artifactId>
             <version>development-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>libbase</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>libloader</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-reporting-engine</groupId>
+                    <artifactId>pentaho-reporting-engine-classic-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-reporting-engine</groupId>
+                    <artifactId>pentaho-reporting-engine-classic-extensions</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>libserializer</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>libformula</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>libdocbundle</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>libfonts</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>libformat</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-reporting-engine</groupId>
+                    <artifactId>pentaho-reporting-engine-classic-extensions-drill-down</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-reporting-engine</groupId>
+                    <artifactId>pentaho-reporting-engine-classic-extensions-scripting</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-reporting-engine</groupId>
+                    <artifactId>pentaho-reporting-engine-legacy-charts</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>libxml</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-reporting-engine</groupId>
+                    <artifactId>pentaho-reporting-engine-classic-extensions-toc</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-library</groupId>
+                    <artifactId>librepository</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>pentaho-reporting-engine</groupId>
+                    <artifactId>pentaho-reporting-engine-wizard-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <build>
