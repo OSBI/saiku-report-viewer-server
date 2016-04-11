@@ -10,6 +10,14 @@ import org.pentaho.reporting.engine.classic.core.ClassicEngineBoot;
 import org.pentaho.reporting.engine.classic.core.MasterReport;
 import org.pentaho.reporting.engine.classic.core.modules.output.table.html.HtmlReportUtil;
 import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
+import org.pentaho.reporting.libraries.resourceloader.factory.drawable.DrawableResourceFactory;
+import org.pentaho.reporting.libraries.resourceloader.factory.image.ImageResourceFactory;
+import org.pentaho.reporting.libraries.resourceloader.factory.property.PropertiesResourceFactory;
+import org.pentaho.reporting.libraries.resourceloader.loader.URLResourceLoader;
+import org.pentaho.reporting.libraries.resourceloader.loader.file.FileResourceLoader;
+import org.pentaho.reporting.libraries.resourceloader.loader.raw.RawResourceLoader;
+import org.pentaho.reporting.libraries.resourceloader.loader.resource.ClassloaderResourceLoader;
+import org.pentaho.reporting.libraries.resourceloader.loader.zip.ZipResourceLoader;
 
 import javax.activation.DataHandler;
 import javax.ws.rs.core.Response;
@@ -27,28 +35,28 @@ public class ReportServerImpl implements ReportServer {
 
     ResourceManager mgr = new ResourceManager();
 
-//    mgr.registerLoader(new URLResourceLoader());
-//    mgr.registerLoader(new FileResourceLoader());
-//    mgr.registerLoader(new RawResourceLoader());
-//    mgr.registerLoader(new ClassloaderResourceLoader());
-//    mgr.registerLoader(new ZipResourceLoader());
-//
-//    mgr.registerFactory(new PropertiesResourceFactory());
-//    mgr.registerFactory(new DrawableResourceFactory());
-//    mgr.registerFactory(new ImageResourceFactory());
+    mgr.registerLoader(new URLResourceLoader());
+    mgr.registerLoader(new FileResourceLoader());
+    mgr.registerLoader(new RawResourceLoader());
+    mgr.registerLoader(new ClassloaderResourceLoader());
+    mgr.registerLoader(new ZipResourceLoader());
 
-//    MasterReport report = (MasterReport) mgr.createDirectly(reportBytes, MasterReport.class).getResource();
-//
-//    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//    PrintStream ps = new PrintStream(bos, true);
-//
-//    HtmlReportUtil.createStreamHTML(report, ps);
-//
-//    ps.flush();
-//    bos.flush();
-//
-//    return bos.toString();
-    return "<html><body><h1>It Works</h1></body></html>";
+    mgr.registerFactory(new PropertiesResourceFactory());
+    mgr.registerFactory(new DrawableResourceFactory());
+    mgr.registerFactory(new ImageResourceFactory());
+
+    MasterReport report = (MasterReport) mgr.createDirectly(reportBytes, MasterReport.class).getResource();
+
+    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    PrintStream ps = new PrintStream(bos, true);
+
+    HtmlReportUtil.createStreamHTML(report, ps);
+
+    ps.flush();
+    bos.flush();
+
+    return bos.toString();
+    //return "<html><body><h1>It Works</h1></body></html>";
   }
 
   @Override
