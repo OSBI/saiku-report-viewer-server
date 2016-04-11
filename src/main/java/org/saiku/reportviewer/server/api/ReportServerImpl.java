@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Map;
 
 import com.google.common.io.Files;
+import org.apache.commons.io.IOUtils;
 import org.pentaho.reporting.engine.classic.core.ClassicEngineBoot;
 import org.pentaho.reporting.engine.classic.core.MasterReport;
 import org.pentaho.reporting.engine.classic.core.modules.output.table.html.HtmlReportUtil;
@@ -18,22 +19,34 @@ public class ReportServerImpl implements ReportServer {
 
   @Override
   public String render(/*String reportId, String outputFormat, Map<String, String> params*/) throws Exception {
+    byte[] reportBytes = IOUtils.toByteArray(ReportServerImpl.class.getResourceAsStream("/basic_sample.prpt"));
+
     ClassicEngineBoot.getInstance().start();
 
-    URL url = ReportServerImpl.class.getResource("/basic_sample.prpt");
     ResourceManager mgr = new ResourceManager();
-    MasterReport report = (MasterReport) mgr.createDirectly(url, MasterReport.class).getResource();
 
-    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    PrintStream ps = new PrintStream(bos, true);
+//    mgr.registerLoader(new URLResourceLoader());
+//    mgr.registerLoader(new FileResourceLoader());
+//    mgr.registerLoader(new RawResourceLoader());
+//    mgr.registerLoader(new ClassloaderResourceLoader());
+//    mgr.registerLoader(new ZipResourceLoader());
+//
+//    mgr.registerFactory(new PropertiesResourceFactory());
+//    mgr.registerFactory(new DrawableResourceFactory());
+//    mgr.registerFactory(new ImageResourceFactory());
 
-    HtmlReportUtil.createStreamHTML(report, ps);
-
-    ps.flush();
-    bos.flush();
-
-    return bos.toString();
-//    return "<html><body><h1>It Works</h1></body></html>";
+//    MasterReport report = (MasterReport) mgr.createDirectly(reportBytes, MasterReport.class).getResource();
+//
+//    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//    PrintStream ps = new PrintStream(bos, true);
+//
+//    HtmlReportUtil.createStreamHTML(report, ps);
+//
+//    ps.flush();
+//    bos.flush();
+//
+//    return bos.toString();
+    return "<html><body><h1>It Works</h1></body></html>";
   }
 
   @Override
@@ -83,5 +96,10 @@ public class ReportServerImpl implements ReportServer {
     }
 
     return reportsRoot;
+  }
+
+  public static void main(String[] args) throws Exception {
+    ReportServerImpl r = new ReportServerImpl();
+    System.out.println(r.render());
   }
 }
