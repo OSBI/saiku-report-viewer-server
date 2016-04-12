@@ -29,7 +29,7 @@ public class ReportServerImpl implements ReportServer {
   public void init(){
     ClassicEngineBoot.getInstance().start();
     mgr = new ResourceManager();
-    mgr.registerDefaults();
+    //mgr.registerDefaults();
   }
   @Override
   public String render(/*String reportId, String outputFormat, Map<String, String> params*/) throws Exception {
@@ -37,7 +37,7 @@ public class ReportServerImpl implements ReportServer {
 
 
 
-    final URL url = ReportServerImpl.class.getResource("/basic_sample.prpt");
+   // final URL url = ReportServerImpl.class.getResource("/basic_sample.prpt");
 
 
    /* mgr.registerLoader(new URLResourceLoader());
@@ -54,7 +54,7 @@ public class ReportServerImpl implements ReportServer {
 
 
 
-    MasterReport report = (MasterReport) mgr.createDirectly(url, MasterReport.class).getResource();
+    MasterReport report = (MasterReport) mgr.createDirectly(reportBytes, MasterReport.class).getResource();
 
     ByteArrayOutputStream bos = new ByteArrayOutputStream();
     PrintStream ps = new PrintStream(bos, true);
