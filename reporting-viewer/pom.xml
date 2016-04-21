@@ -7,7 +7,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <pentaho.version>5.4.0.1-130</pentaho.version>
+        <pentaho.version>7.0-SNAPSHOT</pentaho.version>
         <pentaho.kettle.version>TRUNK-SNAPSHOT</pentaho.kettle.version>
     </properties>
 
@@ -95,12 +95,12 @@
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>pentaho-library</groupId>
             <artifactId>libloader</artifactId>
             <version>${pentaho.version}</version>
-        </dependency>-->
-       <!-- <dependency>
+        </dependency>
+        <dependency>
             <groupId>pentaho-reporting-engine</groupId>
             <artifactId>pentaho-reporting-engine-classic-core</artifactId>
             <version>${pentaho.version}</version>
@@ -109,18 +109,18 @@
             <groupId>pentaho-reporting-engine</groupId>
             <artifactId>pentaho-reporting-engine-classic-extensions</artifactId>
             <version>${pentaho.version}</version>
-        </dependency>-->
-        <!--<dependency>
+        </dependency>
+        <dependency>
             <groupId>pentaho-library</groupId>
             <artifactId>libbase</artifactId>
             <version>${pentaho.version}</version>
-        </dependency>-->
-        <dependency>
+        </dependency>
+        <!--<dependency>
             <groupId>bi.meteorite</groupId>
             <artifactId>pentahoreporting-megabundle</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-      <!--  <dependency>
+        </dependency>-->
+        <dependency>
             <groupId>pentaho-library</groupId>
             <artifactId>libserializer</artifactId>
             <version>${pentaho.version}</version>
@@ -143,6 +143,11 @@
         <dependency>
             <groupId>pentaho-library</groupId>
             <artifactId>libdocbundle</artifactId>
+            <version>${pentaho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>libcss</artifactId>
             <version>${pentaho.version}</version>
         </dependency>
         <dependency>
@@ -179,7 +184,7 @@
             <groupId>pentaho-reporting-engine</groupId>
             <artifactId>pentaho-reporting-engine-wizard-core</artifactId>
             <version>${pentaho.version}</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>

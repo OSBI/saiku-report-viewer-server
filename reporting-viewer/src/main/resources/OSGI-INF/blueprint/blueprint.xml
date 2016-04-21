@@ -20,8 +20,12 @@
         </jaxrs:serviceBeans>
     </jaxrs:server>
 
+    <reference interface="org.pentaho.reporting.engine.classic.core.ReportingInterface" id="reportingService"/>
+
     <bean id="saikuReportViewerServiceBean" class="org.saiku.reportviewer.server.api.ReportServerImpl"
-          init-method="init"/>
+          init-method="init">
+        <property name="myservice" ref="reportingService"/>
+    </bean>
 
 
 </blueprint>

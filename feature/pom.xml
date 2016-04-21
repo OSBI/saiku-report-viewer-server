@@ -20,7 +20,7 @@
             <groupId>org.saiku</groupId>
             <artifactId>saiku-report-viewer-server</artifactId>
             <version>development-SNAPSHOT</version>
-            <exclusions>
+          <!--  <exclusions>
                 <exclusion>
                     <groupId>pentaho-library</groupId>
                     <artifactId>libbase</artifactId>
@@ -85,7 +85,7 @@
                     <groupId>pentaho-reporting-engine</groupId>
                     <artifactId>pentaho-reporting-engine-wizard-core</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions>-->
         </dependency>
 
     </dependencies>

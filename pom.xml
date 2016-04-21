@@ -7,7 +7,6 @@
     <packaging>pom</packaging>
 
     <modules>
-	<module>reporting-megabundle</module>
         <module>reporting-viewer</module>
         <module>feature</module>
     </modules>
