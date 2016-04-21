@@ -12,6 +12,7 @@ import org.pentaho.reporting.engine.classic.core.MasterReport;
 import org.pentaho.reporting.engine.classic.core.ReportingInterface;
 import org.pentaho.reporting.engine.classic.core.modules.output.table.html.HtmlReportUtil;
 import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
+import org.pentaho.reporting.libraries.resourceloader.ResourceFactory;
 import org.pentaho.reporting.libraries.resourceloader.factory.drawable.DrawableResourceFactory;
 import org.pentaho.reporting.libraries.resourceloader.factory.image.ImageResourceFactory;
 import org.pentaho.reporting.libraries.resourceloader.factory.property.PropertiesResourceFactory;
