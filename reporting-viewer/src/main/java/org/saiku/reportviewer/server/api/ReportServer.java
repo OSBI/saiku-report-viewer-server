@@ -1,7 +1,9 @@
 package org.saiku.reportviewer.server.api;
 
 import javax.activation.DataHandler;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Map;
@@ -19,7 +21,8 @@ public interface ReportServer {
   String listUploadedFiles() throws Exception;
 
   @GET
-  @Path("/render")
+  @Path("/render/{id}.{format}")
   @Produces("text/html")
-  String render(/*String reportId, String outputFormat, Map<String, String> params*/) throws Exception;
+  String render(@PathParam("id") String reportId, @PathParam("format") String outputFormat,
+                @Context HttpServletRequest request) throws Exception;
 }

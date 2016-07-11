@@ -23,6 +23,7 @@ import org.pentaho.reporting.libraries.resourceloader.loader.resource.Classloade
 import org.pentaho.reporting.libraries.resourceloader.loader.zip.ZipResourceLoader;
 
 import javax.activation.DataHandler;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
 
 public class ReportServerImpl implements ReportServer {
@@ -35,7 +36,7 @@ public class ReportServerImpl implements ReportServer {
     //mgr = new ResourceManager();
     //mgr.registerDefaults();
     try {
-      render();
+      render(null, null, null);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -46,7 +47,7 @@ public class ReportServerImpl implements ReportServer {
   }
 
   @Override
-  public String render(/*String reportId, String outputFormat, Map<String, String> params*/) throws Exception {
+  public String render(String reportId, String outputFormat, HttpServletRequest request) throws Exception {
 
 
     return myservice.createReport("/tmp/");
@@ -104,6 +105,6 @@ public class ReportServerImpl implements ReportServer {
 
   public static void main(String[] args) throws Exception {
     ReportServerImpl r = new ReportServerImpl();
-    System.out.println(r.render());
+    System.out.println(r.render(null, null, null));
   }
 }

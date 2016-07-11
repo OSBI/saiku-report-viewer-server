@@ -103,7 +103,7 @@
         <dependency>
             <groupId>pentaho-reporting-engine</groupId>
             <artifactId>pentaho-reporting-engine-classic-core</artifactId>
-            <version>${pentaho.version}</version>
+            <version>7.0-OSGI-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>pentaho-reporting-engine</groupId>
@@ -190,11 +190,16 @@
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.0.1</version>
         </dependency>
-      <!--  <dependency>
-            <groupId>pentaho-library</groupId>
-            <artifactId>libloader</artifactId>
-            <version>${pentaho.version}</version>
-        </dependency>-->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+        </dependency>
+        <!--  <dependency>
+              <groupId>pentaho-library</groupId>
+              <artifactId>libloader</artifactId>
+              <version>${pentaho.version}</version>
+          </dependency>-->
         <!-- Pentaho -->
     <!--    <dependency>
             <groupId>pentaho</groupId>
