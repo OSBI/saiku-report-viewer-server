@@ -3,6 +3,8 @@ package org.saiku.reportviewer.server.api;
 import java.io.*;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.io.Files;
@@ -28,10 +30,10 @@ import javax.ws.rs.core.Response;
 
 public class ReportServerImpl implements ReportServer {
   private static File reportsRoot;
-  ResourceManager mgr;
+  private ResourceManager mgr;
   private ReportingInterface myservice;
 
-  public void init(){
+  public void init() {
     //ClassicEngineBoot.getInstance().start();
     //mgr = new ResourceManager();
     //mgr.registerDefaults();
@@ -79,20 +81,15 @@ public class ReportServerImpl implements ReportServer {
   }
 
   @Override
-  public String listUploadedFiles() throws Exception {
-    StringBuilder result = new StringBuilder("[");
+  public List<String> listUploadedFiles() throws Exception {
+    List<String> result = new ArrayList<>();
 
     File root = getReportsRoot();
     for (File f : root.listFiles()) {
-      if (result.length() > 1) {
-        result.append(",");
-      }
-      result.append(f.getName());
+      result.add(f.getName());
     }
 
-    result.append("]");
-
-    return result.toString();
+    return result;
   }
 
   private File getReportsRoot() {

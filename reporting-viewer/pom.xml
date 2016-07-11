@@ -185,6 +185,7 @@
             <artifactId>pentaho-reporting-engine-wizard-core</artifactId>
             <version>${pentaho.version}</version>
         </dependency>
+        <!-- Restful API related dependencies -->
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
@@ -194,6 +195,16 @@
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.0</version>
         </dependency>
         <!--  <dependency>
               <groupId>pentaho-library</groupId>
@@ -439,7 +450,6 @@
             <artifactId>org.apache.karaf.features.core</artifactId>
             <version>4.0.4</version>
         </dependency>-->
-
     </dependencies>
 
     <!-- Build workflow definitions -->

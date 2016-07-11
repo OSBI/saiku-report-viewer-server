@@ -6,6 +6,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Map;
 
 @Path("/")
@@ -18,7 +19,7 @@ public interface ReportServer {
   @GET
   @Path("/list")
   @Produces("application/json")
-  String listUploadedFiles() throws Exception;
+  List<String> listUploadedFiles() throws Exception;
 
   @GET
   @Path("/render/{id}.{format}")
