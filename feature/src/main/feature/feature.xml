@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <features name="saiku-report-viewer-server" xmlns="http://karaf.apache.org/xmlns/features/v1.3.0">
-    <!--<feature name="google-guava">
+    <feature name="google-guava">
         <bundle dependency="true">wrap:mvn:com.google.guava/guava/13.0.1</bundle>
     </feature>
     <feature name="pentaho">
@@ -8,7 +8,7 @@
         <bundle dependency="true">wrap:mvn:pentaho/cpf-core/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho/pentaho-connections/2.2.1</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libloader/TRUNK-SNAPSHOT</bundle>
-        <bundle dependency="true">wrap:mvn:pentaho-library/libbase/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libbase/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libserializer/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libformula/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libfonts/TRUNK-SNAPSHOT</bundle>
@@ -20,7 +20,7 @@
     <feature name="pentaho-reporting">
         <feature>google-guava</feature>
         <feature>pentaho</feature>
-        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-core/TRUNK-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-core/7.0-OSGI-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-scripting/TRUNK-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-drill-down/TRUNK-SNAPSHOT</bundle>
@@ -46,7 +46,5 @@
         <feature>pentaho-reporting</feature>
         <feature>pentaho-kettle</feature>
         <bundle dependency="true">wrap:mvn:pentaho/mondrian/3.2.0.13658</bundle>
-    </feature>-->
-
-
+    </feature>
 </features>

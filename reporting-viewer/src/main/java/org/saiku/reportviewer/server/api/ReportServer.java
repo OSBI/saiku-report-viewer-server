@@ -1,13 +1,12 @@
 package org.saiku.reportviewer.server.api;
 
 import javax.activation.DataHandler;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.util.List;
-import java.util.Map;
 
 @Path("/")
 public interface ReportServer {
@@ -24,6 +23,11 @@ public interface ReportServer {
   @GET
   @Path("/render/{id}.{format}")
   @Produces("text/html")
-  String render(@PathParam("id") String reportId, @PathParam("format") String outputFormat,
-                @Context HttpServletRequest request) throws Exception;
+  Response render(@PathParam("id") String reportId, @PathParam("format") String outputFormat,
+                @Context UriInfo info) throws Exception;
+
+  @GET
+  @Path("/hello_world")
+  @Produces("application/json")
+  String helloWorld() throws Exception;
 }
