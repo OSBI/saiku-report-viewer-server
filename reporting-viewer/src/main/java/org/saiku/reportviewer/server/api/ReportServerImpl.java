@@ -10,13 +10,14 @@ import java.util.Map;
 
 import com.google.common.io.Files;
 import org.apache.commons.io.IOUtils;
-import org.pentaho.reporting.engine.classic.core.ClassicEngineBoot;
-import org.pentaho.reporting.engine.classic.core.DataFactory;
-import org.pentaho.reporting.engine.classic.core.MasterReport;
-import org.pentaho.reporting.engine.classic.core.ReportingInterface;
+import org.pentaho.reporting.engine.classic.core.*;
 import org.pentaho.reporting.engine.classic.core.layout.output.AbstractReportProcessor;
+import org.pentaho.reporting.engine.classic.core.modules.output.pageable.base.PageableReportProcessor;
+import org.pentaho.reporting.engine.classic.core.modules.output.pageable.pdf.PdfOutputProcessor;
+import org.pentaho.reporting.engine.classic.core.modules.output.table.base.FlowReportProcessor;
 import org.pentaho.reporting.engine.classic.core.modules.output.table.base.StreamReportProcessor;
 import org.pentaho.reporting.engine.classic.core.modules.output.table.html.*;
+import org.pentaho.reporting.engine.classic.core.modules.output.table.xls.FlowExcelOutputProcessor;
 import org.pentaho.reporting.libraries.repository.ContentLocation;
 import org.pentaho.reporting.libraries.repository.DefaultNameGenerator;
 import org.pentaho.reporting.libraries.repository.stream.StreamRepository;
@@ -88,27 +89,51 @@ public class ReportServerImpl implements ReportServer {
     // Prepare to generate the report
     AbstractReportProcessor reportProcessor = null;
 
-    switch (outputFormat) {
-      case "xls": // TODO - Implement XLS (Excel) generation
-      case "pdf": // TODO - Implement PDF generation
-      case "html":
-        StreamRepository targetRepository = new StreamRepository(outputStream);
-        ContentLocation targetRoot = targetRepository.getRoot();
-        HtmlOutputProcessor outputProcessor = new StreamHtmlOutputProcessor(report.getConfiguration());
-        HtmlPrinter printer = new AllItemsHtmlPrinter(report.getResourceManager());
-        printer.setContentWriter(targetRoot, new DefaultNameGenerator(targetRoot, "index", "html"));
-        printer.setDataWriter(null, null);
-        printer.setUrlRewriter(new FileSystemURLRewriter());
-        outputProcessor.setPrinter(printer);
-        reportProcessor = new StreamReportProcessor(report, outputProcessor);
-        break;
-    }
+    try {
+      // Create the report generator for each report type
+      switch (outputFormat) {
+        case "xls":
+          reportProcessor = createXlsProcessor(outputStream, report);
+        case "pdf":
+          reportProcessor = createPdfProcessor(outputStream, report);
+        case "html":
+          reportProcessor = createHtmlProcessor(outputStream, report);
+          break;
+      }
 
-    reportProcessor.processReport();
+      // Fill and generate report
+      reportProcessor.processReport();
+    } finally {
+      // Ensure that the processor was correctly closed
+      reportProcessor.close();
+    }
 
     Response.ResponseBuilder response = Response.ok(outputFile);
     response.header("Content-Disposition", "attachment; filename=" + outputFile.getName());
+
     return response.build();
+  }
+
+  private AbstractReportProcessor createXlsProcessor(OutputStream outputStream, MasterReport report) throws ReportProcessingException {
+    FlowExcelOutputProcessor target = new FlowExcelOutputProcessor(report.getConfiguration(), outputStream, report.getResourceManager());
+    return new FlowReportProcessor(report, target);
+  }
+
+  private AbstractReportProcessor createPdfProcessor(OutputStream outputStream, MasterReport report) throws ReportProcessingException {
+    PdfOutputProcessor outputProcessor = new PdfOutputProcessor(report.getConfiguration(), outputStream, report.getResourceManager());
+    return new PageableReportProcessor(report, outputProcessor);
+  }
+
+  private AbstractReportProcessor createHtmlProcessor(OutputStream outputStream, MasterReport report) throws ReportProcessingException {
+    StreamRepository targetRepository = new StreamRepository(outputStream);
+    ContentLocation targetRoot = targetRepository.getRoot();
+    HtmlOutputProcessor outputProcessor = new StreamHtmlOutputProcessor(report.getConfiguration());
+    HtmlPrinter printer = new AllItemsHtmlPrinter(report.getResourceManager());
+    printer.setContentWriter(targetRoot, new DefaultNameGenerator(targetRoot, "index", "html"));
+    printer.setDataWriter(null, null);
+    printer.setUrlRewriter(new FileSystemURLRewriter());
+    outputProcessor.setPrinter(printer);
+    return new StreamReportProcessor(report, outputProcessor);
   }
 
   @Override
