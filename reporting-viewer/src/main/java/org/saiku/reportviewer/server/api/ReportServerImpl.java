@@ -4,12 +4,9 @@ import java.io.*;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.google.common.io.Files;
-import org.apache.commons.io.IOUtils;
 import org.pentaho.reporting.engine.classic.core.*;
 import org.pentaho.reporting.engine.classic.core.layout.output.AbstractReportProcessor;
 import org.pentaho.reporting.engine.classic.core.modules.output.pageable.base.PageableReportProcessor;
@@ -23,19 +20,8 @@ import org.pentaho.reporting.libraries.repository.DefaultNameGenerator;
 import org.pentaho.reporting.libraries.repository.stream.StreamRepository;
 import org.pentaho.reporting.libraries.resourceloader.Resource;
 import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
-import org.pentaho.reporting.libraries.resourceloader.ResourceFactory;
-import org.pentaho.reporting.libraries.resourceloader.factory.drawable.DrawableResourceFactory;
-import org.pentaho.reporting.libraries.resourceloader.factory.image.ImageResourceFactory;
-import org.pentaho.reporting.libraries.resourceloader.factory.property.PropertiesResourceFactory;
-import org.pentaho.reporting.libraries.resourceloader.loader.URLResourceLoader;
-import org.pentaho.reporting.libraries.resourceloader.loader.file.FileResourceLoader;
-import org.pentaho.reporting.libraries.resourceloader.loader.raw.RawResourceLoader;
-import org.pentaho.reporting.libraries.resourceloader.loader.resource.ClassloaderResourceLoader;
-import org.pentaho.reporting.libraries.resourceloader.loader.zip.ZipResourceLoader;
 
 import javax.activation.DataHandler;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
@@ -75,11 +61,6 @@ public class ReportServerImpl implements ReportServer {
     OutputStream outputStream = new FileOutputStream(outputFile);
 
     MasterReport report = getReportDefinition(reportId);
-    DataFactory dataFactory = getDataFactory();
-
-    if (dataFactory != null) {
-      report.setDataFactory(dataFactory);
-    }
 
     // Add any parameters to the report
     for (String key : info.getQueryParameters().keySet()) {
@@ -197,11 +178,6 @@ public class ReportServerImpl implements ReportServer {
     report.setVisible(true);
 
     return report;
-  }
-
-  protected DataFactory getDataFactory() {
-    // TODO - Implement the datafactory via datasource
-    return null;
   }
 
   public static void main(String[] args) throws Exception {
