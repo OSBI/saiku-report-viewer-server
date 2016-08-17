@@ -5,26 +5,23 @@
         <bundle>mvn:org.saiku/saiku-report-viewer-server/development-SNAPSHOT</bundle>
     </feature>
     <feature name="google-guava">
-        <bundle dependency="true">wrap:mvn:com.google.guava/guava/13.0.1</bundle>
+        <bundle dependency="true">wrap:mvn:com.google.guava/guava/19.0</bundle>
     </feature>
     <feature name="pentaho">
         <feature>google-guava</feature>
-        <!--bundle dependency="true">wrap:mvn:pentaho/cpf-core/TRUNK-SNAPSHOT</bundle>
-        <bundle dependency="true">wrap:mvn:pentaho/pentaho-connections/2.2.1</bundle-->
-        <bundle dependency="true">wrap:mvn:pentaho-library/libloader/7.0-OSGI-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libloader/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libbase/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libserializer/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libformula/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libfonts/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libformat/7.0-SNAPSHOT</bundle>
-        <bundle dependency="true">wrap:mvn:pentaho-library/libdocbundle7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/libxml/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-library/librepository/7.0-SNAPSHOT</bundle>
     </feature>
     <feature name="pentaho-reporting">
         <feature>google-guava</feature>
         <feature>pentaho</feature>
-        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-core/7.0-OSGI-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-core/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-scripting/7.0-SNAPSHOT</bundle>
         <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-drill-down/7.0-SNAPSHOT</bundle>

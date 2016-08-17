@@ -18,21 +18,19 @@
     </properties>
 
     <repositories>
+        <!-- START: Pentaho repositories -->
         <repository>
-            <id>pentaho-third-party</id>
-            <url>http://repository.pentaho.org/content/repositories/proxied-3rd-party-releases/</url>
+            <id>pentaho.resolve.repo</id>
+            <url>http://nexus.pentaho.org/content/groups/omni/</url>
         </repository>
         <repository>
-            <id>pentaho-public-release</id>
-            <url>http://repository.pentaho.org/content/repositories/pentaho-public-release-repos/</url>
+            <id>pentaho.resolve.repo2</id>
+            <url>http://repo.pentaho.org/artifactory/repo</url>
         </repository>
-        <repository>
-            <id>pentaho-snapshot</id>
-            <url>http://repository.pentaho.org/content/repositories/public-snapshots/</url>
-        </repository>
+        <!-- END: Penthaho repositories -->
         <repository>
             <id>codehaus</id>
-            <url>http://repository.codehaus.org/</url>
+            <url>https://repository-master.mulesoft.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
             <id>Meteorite Repo</id>
@@ -117,8 +115,9 @@
                     <obrRepository>NONE</obrRepository>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Import-Package>*</Import-Package>
+                        <Import-Package>*,!org.pentaho.reporting.engine.classic.core,!bsh,!com.lowagie.text,!com.sun.pdfview,!org.apache.bsf,!COM.ibm.netrexx.process,!org.apache.poi.hssf.usermodel,!org.apache.poi.openxml4j.exceptions,!junit.framework,!org.apache.poi.hdgf.extractor,!org.bouncycastle.asn1,!org.bouncycastle.cms,!org.bouncycastle.ocsp,!org.dom4j,!com.sun.msv.datatype,!org.fife.ui.rsyntaxtextarea,!org.gjt.xpp,!org.hamcrest,!org.apache.tools.ant</Import-Package>
                         <_include>osgi.bnd</_include>
+                        <Embed-Dependency>pentaho-reporting-engine-classic-core,bsh,itext,pdf-renderer,bsf,com.springsource.com.ibm.netrexx,poi,poi-ooxml,junit,poi-scratchpad,bcprov-jdk15on,bcpkix-jdk15on,bcprov-jdk16,dom4j,xsdlib,rsyntaxtextarea,pull-parser,hamcrest-all,ant</Embed-Dependency>
                     </instructions>
                 </configuration>
             </plugin>

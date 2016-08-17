@@ -30,7 +30,6 @@ public class ReportServerImpl implements ReportServer {
 
   private static File reportsRoot;
   private ResourceManager mgr;
-  private ReportingInterface myservice;
 
   /**
    * Initialization method called automatically by blueprint bean instantiation.
@@ -45,14 +44,6 @@ public class ReportServerImpl implements ReportServer {
     } catch (Exception e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * Hook to set the ReportingInterface implementation via blueprint injection.
-   * @param myservice ReportingInterface implementation
-   */
-  public void setMyservice(org.pentaho.reporting.engine.classic.core.ReportingInterface myservice){
-    this.myservice = myservice;
   }
 
   @Override
