@@ -215,6 +215,24 @@
             <artifactId>ant</artifactId>
             <version>1.8.2</version>
         </dependency>
+        <!-- TODO: Change the systemPath value to be more platform independent -->
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <scope>system</scope>
+            <version>1.8.0_51-b16</version>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>sun-jaxws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>sun-jaxws</groupId>
+            <artifactId>jaxws-tools</artifactId>
+            <version>2.1.7</version>
+        </dependency>
 
         <!-- Restful API related dependencies -->
         <dependency>
@@ -299,6 +317,26 @@
                         <Import-Package>*</Import-Package>
                     </instructions>
                 </configuration>
+            </plugin>
+            <!-- Let me echo some properties -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>Displaying value of 'java.home' property</echo>
+                                <echo>[java.home]: ${java.home}</echo>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -115,9 +115,9 @@
                     <obrRepository>NONE</obrRepository>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Import-Package>*,!org.pentaho.reporting.engine.classic.core,!bsh,!com.lowagie.text,!com.sun.pdfview,!org.apache.bsf,!COM.ibm.netrexx.process,!org.apache.poi.hssf.usermodel,!org.apache.poi.openxml4j.exceptions,!junit.framework,!org.apache.poi.hdgf.extractor,!org.bouncycastle.asn1,!org.bouncycastle.cms,!org.bouncycastle.ocsp,!org.dom4j,!com.sun.msv.datatype,!org.fife.ui.rsyntaxtextarea,!org.gjt.xpp,!org.hamcrest,!org.apache.tools.ant</Import-Package>
+                        <Import-Package>*,!org.pentaho.reporting.engine.classic.core,!bsh,!com.lowagie.text,!com.sun.pdfview,!org.apache.bsf,!COM.ibm.netrexx.process,!org.apache.poi.hssf.usermodel,!org.apache.poi.openxml4j.exceptions,!junit.framework,!org.apache.poi.hdgf.extractor,!org.bouncycastle.asn1,!org.bouncycastle.cms,!org.bouncycastle.ocsp,!org.dom4j,!com.sun.msv.datatype,!org.fife.ui.rsyntaxtextarea,!org.gjt.xpp,!org.hamcrest,!org.apache.tools.ant,!com.sun.tools.apt,!com.oracle.webservices.internal.api.databinding</Import-Package>
                         <_include>osgi.bnd</_include>
-                        <Embed-Dependency>pentaho-reporting-engine-classic-core,bsh,itext,pdf-renderer,bsf,com.springsource.com.ibm.netrexx,poi,poi-ooxml,junit,poi-scratchpad,bcprov-jdk15on,bcpkix-jdk15on,bcprov-jdk16,dom4j,xsdlib,rsyntaxtextarea,pull-parser,hamcrest-all,ant</Embed-Dependency>
+                        <Embed-Dependency>pentaho-reporting-engine-classic-core,bsh,itext,pdf-renderer,bsf,com.springsource.com.ibm.netrexx,poi,poi-ooxml,junit,poi-scratchpad,bcprov-jdk15on,bcpkix-jdk15on,bcprov-jdk16,dom4j,xsdlib,rsyntaxtextarea,pull-parser,hamcrest-all,ant,tools,jaxws-rt,jaxws-tools</Embed-Dependency>
                     </instructions>
                 </configuration>
             </plugin>
