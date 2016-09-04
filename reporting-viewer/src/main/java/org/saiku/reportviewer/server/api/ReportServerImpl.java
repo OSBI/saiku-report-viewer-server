@@ -8,18 +8,12 @@ import java.util.List;
 
 import com.google.common.io.Files;
 import org.pentaho.reporting.engine.classic.core.*;
-import org.pentaho.reporting.engine.classic.core.layout.output.AbstractReportProcessor;
-import org.pentaho.reporting.engine.classic.core.modules.output.pageable.base.PageableReportProcessor;
-import org.pentaho.reporting.engine.classic.core.modules.output.pageable.pdf.PdfOutputProcessor;
-import org.pentaho.reporting.engine.classic.core.modules.output.table.base.FlowReportProcessor;
-import org.pentaho.reporting.engine.classic.core.modules.output.table.base.StreamReportProcessor;
-import org.pentaho.reporting.engine.classic.core.modules.output.table.html.*;
-import org.pentaho.reporting.engine.classic.core.modules.output.table.xls.FlowExcelOutputProcessor;
-import org.pentaho.reporting.libraries.repository.ContentLocation;
-import org.pentaho.reporting.libraries.repository.DefaultNameGenerator;
-import org.pentaho.reporting.libraries.repository.stream.StreamRepository;
 import org.pentaho.reporting.libraries.resourceloader.Resource;
 import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
+import org.saiku.reportviewer.server.exporter.HtmlExporter;
+import org.saiku.reportviewer.server.exporter.PdfExporter;
+import org.saiku.reportviewer.server.exporter.ReportExporter;
+import org.saiku.reportviewer.server.exporter.XlsExporter;
 
 import javax.activation.DataHandler;
 import javax.ws.rs.core.Response;
@@ -30,11 +24,20 @@ public class ReportServerImpl implements ReportServer {
 
   private static File reportsRoot;
   private ResourceManager mgr;
+  private static List<ReportExporter> exporters;
 
   /**
    * Initialization method called automatically by blueprint bean instantiation.
    */
   public void init() {
+    // Initialize exporters list
+    if (exporters == null) {
+      exporters = new ArrayList<>();
+      exporters.add(new HtmlExporter());
+      exporters.add(new PdfExporter());
+      exporters.add(new XlsExporter());
+    }
+
     ClassicEngineBoot.getInstance().start();
     mgr = new ResourceManager();
     mgr.registerDefaults();
@@ -58,54 +61,13 @@ public class ReportServerImpl implements ReportServer {
       report.getParameterValues().put(key, info.getQueryParameters().get(key));
     }
 
-    // Prepare to generate the report
-    AbstractReportProcessor reportProcessor = null;
-
-    try {
-      // Create the report generator for each report type
-      switch (outputFormat) {
-        case "xls":
-          reportProcessor = createXlsProcessor(outputStream, report);
-        case "pdf":
-          reportProcessor = createPdfProcessor(outputStream, report);
-        case "html":
-          reportProcessor = createHtmlProcessor(outputStream, report);
-          break;
-      }
-
-      // Fill and generate report
-      reportProcessor.processReport();
-    } finally {
-      // Ensure that the processor was correctly closed
-      reportProcessor.close();
-    }
+    // Process the report on the desired output format
+    getExporter(outputFormat).process(outputStream, report);
 
     Response.ResponseBuilder response = Response.ok(outputFile);
     response.header("Content-Disposition", "attachment; filename=" + outputFile.getName());
 
     return response.build();
-  }
-
-  private AbstractReportProcessor createXlsProcessor(OutputStream outputStream, MasterReport report) throws ReportProcessingException {
-    FlowExcelOutputProcessor target = new FlowExcelOutputProcessor(report.getConfiguration(), outputStream, report.getResourceManager());
-    return new FlowReportProcessor(report, target);
-  }
-
-  private AbstractReportProcessor createPdfProcessor(OutputStream outputStream, MasterReport report) throws ReportProcessingException {
-    PdfOutputProcessor outputProcessor = new PdfOutputProcessor(report.getConfiguration(), outputStream, report.getResourceManager());
-    return new PageableReportProcessor(report, outputProcessor);
-  }
-
-  private AbstractReportProcessor createHtmlProcessor(OutputStream outputStream, MasterReport report) throws ReportProcessingException {
-    StreamRepository targetRepository = new StreamRepository(outputStream);
-    ContentLocation targetRoot = targetRepository.getRoot();
-    HtmlOutputProcessor outputProcessor = new StreamHtmlOutputProcessor(report.getConfiguration());
-    HtmlPrinter printer = new AllItemsHtmlPrinter(report.getResourceManager());
-    printer.setContentWriter(targetRoot, new DefaultNameGenerator(targetRoot, "index", "html"));
-    printer.setDataWriter(null, null);
-    printer.setUrlRewriter(new FileSystemURLRewriter());
-    outputProcessor.setPrinter(printer);
-    return new StreamReportProcessor(report, outputProcessor);
   }
 
   @Override
@@ -152,6 +114,13 @@ public class ReportServerImpl implements ReportServer {
     return reportsRoot;
   }
 
+  private ReportExporter getExporter(String extension) {
+    for (ReportExporter exporter : exporters) {
+      if (exporter.getExtension().equals(extension)) return exporter;
+    }
+    throw new RuntimeException("Not found any available exporter for " + extension + " format");
+  }
+
   @Override
   public String helloWorld() {
     return "{\"status\": \"ok\", \"message\": \"Hello World\"}";
@@ -169,10 +138,5 @@ public class ReportServerImpl implements ReportServer {
     report.setVisible(true);
 
     return report;
-  }
-
-  public static void main(String[] args) throws Exception {
-    ReportServerImpl r = new ReportServerImpl();
-    System.out.println(r.render(null, null, null));
   }
 }
