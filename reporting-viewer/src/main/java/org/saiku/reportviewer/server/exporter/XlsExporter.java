@@ -8,6 +8,9 @@ import org.pentaho.reporting.engine.classic.core.modules.output.table.xls.FlowEx
 
 import java.io.OutputStream;
 
+/**
+ * Implementation of the ReportExporter interface to the XLS file format.
+ */
 public class XlsExporter implements ReportExporter {
   @Override
   public String getExtension() {

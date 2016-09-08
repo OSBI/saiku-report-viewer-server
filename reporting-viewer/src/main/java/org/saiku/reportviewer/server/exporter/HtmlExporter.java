@@ -11,6 +11,9 @@ import org.pentaho.reporting.libraries.repository.stream.StreamRepository;
 
 import java.io.OutputStream;
 
+/**
+ * Implementation of the ReportExporter interface to the HTML file format.
+ */
 public class HtmlExporter implements ReportExporter {
   private static final String NAME_HINT = "index";
   private static final String SUFFIX = "html";

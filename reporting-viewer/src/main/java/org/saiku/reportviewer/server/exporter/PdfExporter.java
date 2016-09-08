@@ -8,6 +8,9 @@ import org.pentaho.reporting.engine.classic.core.modules.output.pageable.pdf.Pdf
 
 import java.io.OutputStream;
 
+/**
+ * Implementation of the ReportExporter interface to the PDF file format.
+ */
 public class PdfExporter implements ReportExporter {
   @Override
   public String getExtension() {
