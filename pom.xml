@@ -115,7 +115,8 @@
                     <obrRepository>NONE</obrRepository>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Import-Package>*</Import-Package>                        
+                        <Import-Package>*,!COM.ibm.netrexx.process</Import-Package>
+                        <_include>osgi.bnd</_include>
                         <Embed-Dependency>pentaho-reporting-engine-classic-core</Embed-Dependency>
                     </instructions>
                 </configuration>
