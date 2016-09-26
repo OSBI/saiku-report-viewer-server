@@ -115,7 +115,7 @@
                     <obrRepository>NONE</obrRepository>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Import-Package>*</Import-Package>
+                        <Import-Package>*</Import-Package>                        
                         <Embed-Dependency>pentaho-reporting-engine-classic-core</Embed-Dependency>
                     </instructions>
                 </configuration>
