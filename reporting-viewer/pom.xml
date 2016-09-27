@@ -241,12 +241,17 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/groovy-1.8.0.jar</systemPath>
         </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>org.saiku</groupId>
             <artifactId>itext</artifactId>
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/itext-2.1.7.jar</systemPath>
+        </dependency-->
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>4.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.saiku</groupId>
@@ -430,6 +435,13 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/MRJToolkitStubs-1.0.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.saiku</groupId>
+            <artifactId>mock-package</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/mock-package-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <!-- Build workflow definitions -->
@@ -473,7 +485,7 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Import-Package>*</Import-Package>
-                        <Embed-Dependency>bsh,bsf,antlr,asm,batik-anim,batik-awt-util,batik-bridge,batik-css,batik-dom,batik-ext,batik-gui-util,batik-gvt,batik-parser,batik-script,batik-svg-dom,batik-util,batik-xml,bcmail,bcprov,commons-codec,commons-logging,ehcache,flute,groovy,itext,itext-rtf,js,libbase,libdocbundle,libfonts,libformat,libformula,libloader,libpixie,librepository,libserializer,libspakline,libswing,libxml,mail,pentaho-database-model,pentaho-reporting-engine,poi,poi-ooxml,poi-ooxml-schemas,rsyntaxtextarea,sac,xml-apis,xmlbeans,netrexx,mrj</Embed-Dependency>
+                        <Embed-Dependency>bsh,bsf,antlr,asm,batik-anim,batik-awt-util,batik-bridge,batik-css,batik-dom,batik-ext,batik-gui-util,batik-gvt,batik-parser,batik-script,batik-svg-dom,batik-util,batik-xml,bcmail,bcprov,commons-codec,commons-logging,ehcache,flute,groovy,itext,itext-rtf,js,libbase,libdocbundle,libfonts,libformat,libformula,libloader,libpixie,librepository,libserializer,libspakline,libswing,libxml,mail,pentaho-database-model,pentaho-reporting-engine,poi,poi-ooxml,poi-ooxml-schemas,rsyntaxtextarea,sac,xml-apis,xmlbeans,netrexx,mrj,mock-package</Embed-Dependency>
                         <Embed-Transitive>true</Embed-Transitive>
                     </instructions>
                 </configuration>
