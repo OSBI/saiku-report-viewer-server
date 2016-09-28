@@ -451,13 +451,6 @@
         </dependency>
         <dependency>
             <groupId>org.saiku</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/commons-logging-1.1.3.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>org.saiku</groupId>
             <artifactId>commons-pool</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>system</scope>
@@ -494,6 +487,18 @@
             <version>1.0-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/barcode4j-2.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.saiku</groupId>
+            <artifactId>avalon</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/avalon-framework-4.1.5.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>pentaho-library</groupId>
+            <artifactId>libsparkline</artifactId>
+            <version>${pentaho.version}</version>
         </dependency>
     </dependencies>
 
@@ -544,14 +549,14 @@
                             itext-rtf,js,libbase,libdocbundle,libfonts,libformat,libformula,libloader,libpixie,
                             librepository,libserializer,libspakline,libswing,libxml,mail,pentaho-database-model,
                             pentaho-reporting-engine,poi,poi-ooxml,poi-ooxml-schemas,rsyntaxtextarea,sac,xml-apis,
-                            xmlbeans,netrexx,barbecue,commons-dbcp,commons-logging,commons-collections,commons-pool,
-                            jdom,jaxen,jfreechart,jcommon,barcode4j,
+                            xmlbeans,netrexx,barbecue,commons-dbcp,commons-collections,commons-pool,
+                            jdom,jaxen,jfreechart,jcommon,barcode4j,avalon,
                             mock-package,
                             pentaho-reporting-engine-classic-core,pentaho-reporting-engine-classic-extensions,
                             pentaho-reporting-engine-classic-extensions-drill-down,
                             pentaho-reporting-engine-classic-extensions-scripting,
                             pentaho-reporting-engine-legacy-charts,pentaho-reporting-engine-classic-extensions-toc,
-                            pentaho-reporting-engine-wizard-core
+                            pentaho-reporting-engine-wizard-core,libsparkline
                         </Embed-Dependency>
                         <Embed-Transitive>true</Embed-Transitive>
                     </instructions>
