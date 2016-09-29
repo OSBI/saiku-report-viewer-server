@@ -18,6 +18,9 @@
         <jaxrs:serviceBeans>
             <ref component-id="saikuReportViewerServiceBean"/>
         </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
+        </jaxrs:providers>
     </jaxrs:server>
 
     <bean id="saikuReportViewerServiceBean" class="org.saiku.reportviewer.server.api.ReportServerImpl"
