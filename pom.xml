@@ -60,6 +60,15 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>osgeo</id>
+            <name>OSGeo Repository</name>
+            <layout>default</layout>
+            <url>http://download.osgeo.org/webdav/geotools/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
     <dependencies>

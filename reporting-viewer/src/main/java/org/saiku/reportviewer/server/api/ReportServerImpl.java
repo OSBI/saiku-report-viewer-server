@@ -50,7 +50,13 @@ public class ReportServerImpl implements ReportServer {
     File outputFile = FileUtil.createTempFile(outputFormat);
     OutputStream outputStream = new FileOutputStream(outputFile);
 
-    MasterReport report = ReportUtil.getAndFillReport(mgr, new File(getReportsRoot(), reportId), info.getQueryParameters());
+    MasterReport report = null;
+
+    if (reportId.equals("test")) {
+      report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/basic_sample.prpt"), info.getQueryParameters());
+    } else {
+      report = ReportUtil.getAndFillReport(mgr, new File(getReportsRoot(), reportId), info.getQueryParameters());
+    }
 
     // Process the report on the desired output format
     getExporter(outputFormat).process(outputStream, report);

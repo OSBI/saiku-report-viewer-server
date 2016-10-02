@@ -15,8 +15,10 @@ public class ReportUtil {
   private static final String QUERY_NAME = "ReportQuery";
 
   public static MasterReport getReportDefinition(ResourceManager mgr, File reportFile) throws Exception {
-    URL reportDefinitionURL = reportFile.toURI().toURL();
+    return getReportDefinition(mgr, reportFile.toURI().toURL());
+  }
 
+  public static MasterReport getReportDefinition(ResourceManager mgr, URL reportDefinitionURL) throws Exception {
     // Parse the report file
     Resource directly = mgr.createDirectly(reportDefinitionURL, MasterReport.class);
     MasterReport report = (MasterReport)directly.getResource();
@@ -27,6 +29,7 @@ public class ReportUtil {
     return report;
   }
 
+
   public static void fillParameters(MasterReport report, MultivaluedMap<String, String> params) {
     for (String key : params.keySet()) {
       report.getParameterValues().put(key, params.get(key));
@@ -36,6 +39,12 @@ public class ReportUtil {
 
   public static MasterReport getAndFillReport(ResourceManager mgr, File reportFile, MultivaluedMap<String, String> params) throws Exception {
     MasterReport report = getReportDefinition(mgr, reportFile);
+    fillParameters(report, params);
+    return report;
+  }
+
+  public static MasterReport getAndFillReport(ResourceManager mgr, URL reportURL, MultivaluedMap<String, String> params) throws Exception {
+    MasterReport report = getReportDefinition(mgr, reportURL);
     fillParameters(report, params);
     return report;
   }
