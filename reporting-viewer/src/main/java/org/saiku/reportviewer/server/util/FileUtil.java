@@ -12,10 +12,11 @@ import java.util.List;
  */
 public class FileUtil {
   private static final String DEFAULT_PREFIX = "report";
+  private static final String FORMAT_SEPARATOR = ".";
   private static final int BUFFER_SIZE = 1024;
 
   public static File createTempFile(String format) throws IOException {
-    return File.createTempFile(DEFAULT_PREFIX, format);
+    return File.createTempFile(DEFAULT_PREFIX, FORMAT_SEPARATOR + format);
   }
 
   public static void copy(InputStream input, OutputStream output) throws  IOException {
