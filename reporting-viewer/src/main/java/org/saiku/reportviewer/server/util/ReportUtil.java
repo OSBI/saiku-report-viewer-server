@@ -23,7 +23,6 @@ public class ReportUtil {
     Resource directly = mgr.createDirectly(reportDefinitionURL, MasterReport.class);
     MasterReport report = (MasterReport)directly.getResource();
 
-    report.setQuery(QUERY_NAME);
     report.setVisible(true);
 
     return report;

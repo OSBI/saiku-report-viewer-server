@@ -8,6 +8,7 @@ import org.pentaho.reporting.engine.classic.core.modules.output.table.html.*;
 import org.pentaho.reporting.libraries.repository.ContentLocation;
 import org.pentaho.reporting.libraries.repository.DefaultNameGenerator;
 import org.pentaho.reporting.libraries.repository.stream.StreamRepository;
+import org.saiku.reportviewer.server.util.SaikuHtmlPrinter;
 
 import java.io.OutputStream;
 
@@ -29,7 +30,8 @@ public class HtmlExporter implements ReportExporter {
     StreamRepository targetRepository = new StreamRepository(outputStream);
     ContentLocation targetRoot = targetRepository.getRoot();
     HtmlOutputProcessor outputProcessor = new StreamHtmlOutputProcessor(report.getConfiguration());
-    HtmlPrinter printer = new AllItemsHtmlPrinter(report.getResourceManager());
+    HtmlPrinter printer = new SaikuHtmlPrinter(report.getResourceManager());
+
     printer.setContentWriter(targetRoot, new DefaultNameGenerator(targetRoot, NAME_HINT, SUFFIX));
     printer.setDataWriter(null, null);
     printer.setUrlRewriter(new FileSystemURLRewriter());

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.pentaho.reporting.engine.classic.core.*;
+import org.pentaho.reporting.engine.classic.core.modules.misc.datafactory.sql.JndiConnectionProvider;
+import org.pentaho.reporting.engine.classic.core.modules.misc.datafactory.sql.SQLReportDataFactory;
 import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
 import org.saiku.reportviewer.server.exporter.HtmlExporter;
 import org.saiku.reportviewer.server.exporter.PdfExporter;
@@ -58,9 +60,15 @@ public class ReportServerImpl implements ReportServer {
       report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/test.prpt"), info.getQueryParameters());
     } else if (reportId.equals("test_image")) {
       report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/test_image.prpt"), info.getQueryParameters());
+    } else if (reportId.equals("demo")) {
+      report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/test_demo.prpt"), info.getQueryParameters());
+      setDataFactory(report);
     } else {
       report = ReportUtil.getAndFillReport(mgr, new File(getReportsRoot(), reportId), info.getQueryParameters());
     }
+
+    // Set report's data factory
+    setDataFactory(report);
 
     // Process the report on the desired output format
     getExporter(outputFormat).process(outputStream, report);
@@ -69,6 +77,9 @@ public class ReportServerImpl implements ReportServer {
     response.header(CONTENT_DISPOSITION, ATTACHMENT_FILENAME + outputFile.getName());
 
     return response.build();
+  }
+
+  private void setDataFactory(MasterReport report) {
   }
 
   @Override
