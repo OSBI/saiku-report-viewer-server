@@ -10,6 +10,7 @@ import org.pentaho.reporting.libraries.repository.DefaultNameGenerator;
 import org.pentaho.reporting.libraries.repository.stream.StreamRepository;
 import org.saiku.reportviewer.server.util.SaikuHtmlPrinter;
 
+import javax.ws.rs.core.MediaType;
 import java.io.OutputStream;
 
 /**
@@ -49,5 +50,10 @@ public class HtmlExporter implements ReportExporter {
         processor.close();
       }
     }
+  }
+
+  @Override
+  public MediaType getMediaType() {
+    return MediaType.TEXT_HTML_TYPE;
   }
 }

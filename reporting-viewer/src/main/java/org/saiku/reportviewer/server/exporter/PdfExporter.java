@@ -6,6 +6,7 @@ import org.pentaho.reporting.engine.classic.core.layout.output.AbstractReportPro
 import org.pentaho.reporting.engine.classic.core.modules.output.pageable.base.PageableReportProcessor;
 import org.pentaho.reporting.engine.classic.core.modules.output.pageable.pdf.PdfOutputProcessor;
 
+import javax.ws.rs.core.MediaType;
 import java.io.OutputStream;
 
 /**
@@ -34,5 +35,10 @@ public class PdfExporter implements ReportExporter {
         processor.close();
       }
     }
+  }
+
+  @Override
+  public MediaType getMediaType() {
+    return new MediaType("application", "pdf");
   }
 }

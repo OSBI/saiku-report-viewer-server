@@ -2,6 +2,7 @@ package org.saiku.reportviewer.server.exporter;
 
 import org.pentaho.reporting.engine.classic.core.MasterReport;
 
+import javax.ws.rs.core.MediaType;
 import java.io.OutputStream;
 
 /**
@@ -20,4 +21,10 @@ public interface ReportExporter {
    * @return An string containing this exporter file extension.
    */
   String getExtension();
+
+  /**
+   * Return the correct mime type associated with the returned media.
+   * @return The correct media type.
+   */
+  MediaType getMediaType();
 }

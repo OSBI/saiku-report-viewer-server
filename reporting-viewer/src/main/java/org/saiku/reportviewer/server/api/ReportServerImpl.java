@@ -17,13 +17,14 @@ import org.saiku.reportviewer.server.util.FileUtil;
 import org.saiku.reportviewer.server.util.ReportUtil;
 
 import javax.activation.DataHandler;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 public class ReportServerImpl implements ReportServer {
   private static final String REPORTS_FOLDER = "./reports/upload/";
   private static final String CONTENT_DISPOSITION = "Content-Disposition";
-  private static final String ATTACHMENT_FILENAME = "attachment; filename=";
+  private static final String ATTACHMENT_FILENAME = "inline; filename=";
   private static final String FILE_SAVED_SUCCESSFULLY_MESSAGE = "File saved successfully";
 
   private ResourceManager mgr;
@@ -71,9 +72,10 @@ public class ReportServerImpl implements ReportServer {
     setDataFactory(report);
 
     // Process the report on the desired output format
-    getExporter(outputFormat).process(outputStream, report);
+    ReportExporter exporter = getExporter(outputFormat);
+    exporter.process(outputStream, report);
 
-    Response.ResponseBuilder response = Response.ok(outputFile);
+    Response.ResponseBuilder response = Response.ok(outputFile, exporter.getMediaType());
     response.header(CONTENT_DISPOSITION, ATTACHMENT_FILENAME + outputFile.getName());
 
     return response.build();
