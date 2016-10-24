@@ -25,6 +25,11 @@ public class HtmlExporter implements ReportExporter {
     return "html";
   }
 
+  /**
+   * The process of HTML rendering is a little bit more complex, because it was originaly designed to export a directory
+   * containing images as separate files. So, we had to override the HTMLPrinter in order to render all the image
+   * resources as inline base64.
+   */
   @Override
   public void process(OutputStream outputStream, MasterReport report) {
     AbstractReportProcessor processor = null;

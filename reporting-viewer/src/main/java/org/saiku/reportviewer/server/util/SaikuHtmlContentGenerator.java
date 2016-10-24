@@ -12,11 +12,18 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * This is the implementation of the Saiku DefaultHtmlContentGenerator, responsible for handling images resources and
+ * rendering them as inline base64 images.
+ */
 public class SaikuHtmlContentGenerator extends DefaultHtmlContentGenerator {
   public SaikuHtmlContentGenerator(ResourceManager resourceManager) {
     super(resourceManager);
   }
 
+  /**
+   * In order of being processed, images had to be coverted first to BufferedImages objects.
+   */
   private static BufferedImage toBufferedImage(Image img) {
     if (img instanceof BufferedImage) {
       return (BufferedImage)img;
@@ -31,6 +38,10 @@ public class SaikuHtmlContentGenerator extends DefaultHtmlContentGenerator {
     return bimage;
   }
 
+  /**
+   * This method obtains the images resources, convets them to BufferedImages and uses its bytes to render the base64
+   * information.
+   */
   @Override
   public String writeImage(ImageContainer image, String encoderType, float quality, boolean alpha) throws ContentIOException, IOException {
     // override writeImage

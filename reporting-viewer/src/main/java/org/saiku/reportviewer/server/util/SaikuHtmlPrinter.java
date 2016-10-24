@@ -4,6 +4,10 @@ import org.pentaho.reporting.engine.classic.core.modules.output.table.html.AllIt
 import org.pentaho.reporting.engine.classic.core.modules.output.table.html.helper.DefaultHtmlContentGenerator;
 import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
 
+/**
+ * We had to implement a new Pentaho's HTMLPrinter in order to provide a new content generator to handle images as
+ * inline resources.
+ */
 public class SaikuHtmlPrinter extends AllItemsHtmlPrinter {
   private SaikuHtmlContentGenerator generator;
 

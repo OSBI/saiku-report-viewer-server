@@ -17,11 +17,17 @@ import org.saiku.reportviewer.server.util.FileUtil;
 import org.saiku.reportviewer.server.util.ReportUtil;
 
 import javax.activation.DataHandler;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+/**
+ * This is the implementation of the ReportServer interface. It is the core of the Saiku Report processing (fill and
+ * render).
+ */
 public class ReportServerImpl implements ReportServer {
+  /**
+   * This is the folder where the uploaded reports will be placed.
+   */
   private static final String REPORTS_FOLDER = "./reports/upload/";
   private static final String CONTENT_DISPOSITION = "Content-Disposition";
   private static final String ATTACHMENT_FILENAME = "inline; filename=";
@@ -55,6 +61,10 @@ public class ReportServerImpl implements ReportServer {
 
     MasterReport report = null;
 
+    /*
+     * Those are some sample routes to provided PRPT files in order to ease the process of testing and demoing the
+      * Saiku Report Server.
+     */
     if (reportId.equals("test")) {
       report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/basic_sample.prpt"), info.getQueryParameters());
     } else if (reportId.equals("test_data")) {
@@ -122,6 +132,11 @@ public class ReportServerImpl implements ReportServer {
     throw new RuntimeException("Not available exporter found for " + extension + " format");
   }
 
+  /**
+   * This is the implementation of the helloWorld, a simple 'pingish' method. It is used to determine if the server was
+   * successfully deployed and running.
+   * @return A single string to show that the server is deployed and running.
+   */
   @Override
   public String helloWorld() {
     return "{\"status\": \"ok\", \"message\": \"Hello World\"}";
