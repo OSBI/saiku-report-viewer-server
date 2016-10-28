@@ -534,6 +534,12 @@
             <artifactId>libsparkline</artifactId>
             <version>${pentaho.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <!-- Build workflow definitions -->
@@ -587,6 +593,7 @@
                             jdom,jaxen,jfreechart,jcommon,barcode4j,avalon,jackson-core,jackson-databind,
                             jackson-annotations,jackson-jaxrs-json-provider,jackson-jaxrs-base,
                             jackson-module-jaxb-annotations,
+                            javax.ws.rs-api,
                             xml-apis-ext,
                             mock-package,
                             pentaho-reporting-engine-classic-core,pentaho-reporting-engine-classic-extensions,

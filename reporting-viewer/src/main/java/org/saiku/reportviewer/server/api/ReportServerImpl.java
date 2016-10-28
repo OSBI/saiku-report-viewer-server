@@ -49,9 +49,13 @@ public class ReportServerImpl implements ReportServer {
     }
 
     // Initialize Pentaho's reporting engine
-    ClassicEngineBoot.getInstance().start();
-    mgr = new ResourceManager();
-    mgr.registerDefaults();
+    try {
+      ClassicEngineBoot.getInstance().start();
+      mgr = new ResourceManager();
+      mgr.registerDefaults();
+    } catch (Exception ex) {
+      //
+    }
   }
 
   @Override
