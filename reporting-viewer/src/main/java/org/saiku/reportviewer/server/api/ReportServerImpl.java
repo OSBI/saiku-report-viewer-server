@@ -36,26 +36,22 @@ public class ReportServerImpl implements ReportServer {
   private ResourceManager mgr;
   private static List<ReportExporter> exporters;
 
+  static {
+    // Initialize exporters list (each output format has an associated exporter implementation)
+    exporters = new ArrayList<>();
+    exporters.add(new HtmlExporter());
+    exporters.add(new PdfExporter());
+    exporters.add(new XlsExporter());
+  }
+
   /**
    * Initialization method called automatically by blueprint bean instantiation.
    */
   public void init() {
-    // Initialize exporters list (each output format has an associated exporter implementation)
-    if (exporters == null) {
-      exporters = new ArrayList<>();
-      exporters.add(new HtmlExporter());
-      exporters.add(new PdfExporter());
-      exporters.add(new XlsExporter());
-    }
-
     // Initialize Pentaho's reporting engine
-    try {
-      ClassicEngineBoot.getInstance().start();
-      mgr = new ResourceManager();
-      mgr.registerDefaults();
-    } catch (Exception ex) {
-      //
-    }
+    ClassicEngineBoot.getInstance().start();
+    mgr = new ResourceManager();
+    mgr.registerDefaults();
   }
 
   @Override
