@@ -9,12 +9,18 @@ Saiku Report Viewer Server is an OSGi module implementation capable of handling 
 2. Build the project:
     - `cd saiku-report-viewer-server`
     - `mvn clean install`
-3. Copy the features to Karaf's deploy directory:
-    - `cp feature/target/feature/feature.xml KARAF_HOME/deploy`
-4. Open Karaf and install Saiku Report Viewer Server feature:
+3. Open Karaf and install some required features:
     - `cd KARAF_HOME`
     - `./bin/karaf debug`
+    - `feature:install http http-whiteboard war`
+    - `feature:repo-add cxf 3.1.6`
+    - `feature:install cxf cxf-tools cxf-commands`
+4. Copy the features to Karaf's deploy directory:
+    - `cp feature/target/feature/feature.xml KARAF_HOME/deploy`
+5. At Karaf's console install Saiku Report Viewer Server feature:
     - `feature:install saiku-report-viewer-server`
+6. If everything worked correctly, you should be able to render a test report:
+    - Open on a browser: http://localhost:8181/cxf/reportviewer/render/test.pdf
 
 #### Service Endpoint Operations
 
