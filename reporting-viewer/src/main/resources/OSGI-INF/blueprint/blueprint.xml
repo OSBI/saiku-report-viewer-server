@@ -13,12 +13,12 @@
         </cxf:features>
     </cxf:bus>
 
-
     <jaxrs:server id="saikuReportViewerService" address="/reportviewer">
         <jaxrs:serviceBeans>
             <ref component-id="saikuReportViewerServiceBean"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
+            <bean class="org.saiku.reportviewer.server.filters.CORSFilter"/>
             <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
