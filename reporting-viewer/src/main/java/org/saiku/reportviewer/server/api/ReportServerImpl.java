@@ -69,6 +69,8 @@ public class ReportServerImpl implements ReportServer {
       report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/basic_sample.prpt"), info.getQueryParameters());
     } else if (reportId.equals("test_data")) {
       report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/test.prpt"), info.getQueryParameters());
+    } else if (reportId.equals("test_params")) {
+      report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/test_params.prpt"), info.getQueryParameters());
     } else if (reportId.equals("test_image")) {
       report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/test_image.prpt"), info.getQueryParameters());
     } else if (reportId.equals("demo")) {

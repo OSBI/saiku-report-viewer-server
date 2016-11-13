@@ -7,6 +7,11 @@ import org.pentaho.reporting.libraries.resourceloader.ResourceManager;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.File;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * A class containing utility methods to handle report definition objects.
@@ -31,7 +36,20 @@ public class ReportUtil {
 
   public static void fillParameters(MasterReport report, MultivaluedMap<String, String> params) {
     for (String key : params.keySet()) {
-      report.getParameterValues().put(key, params.get(key));
+      String val = params.get(key).get(0);
+
+      if (key.toLowerCase().contains("date")) {
+        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+          report.getParameterValues().put(key, new java.sql.Date(fmt.parse(val).getTime()));
+        } catch (ParseException ex) {
+          System.err.println("Invalid date format " + val);
+        }
+      } else if (key.toLowerCase().contains("boolean")) {
+        report.getParameterValues().put(key, new Boolean(val));
+      } else {
+        report.getParameterValues().put(key, val);
+      }
     }
   }
 
