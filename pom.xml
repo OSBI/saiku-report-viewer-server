@@ -35,12 +35,12 @@
         <repository>
             <id>Meteorite Repo</id>
             <name>Analytical Labs Repo-releases</name>
-            <url>http://repo.meteorite.bi/content/repositories/alabs-release-local/</url>
+            <url>http://repo.meteorite.bi/repository/alabs-release-local/</url>
         </repository>
         <repository>
             <id>Meteorite snapshots</id>
             <name>Analytical Labs Repo-releases</name>
-            <url>http://repo.meteorite.bi/content/repositories/alabs-snapshot-local/</url>
+            <url>http://repo.meteorite.bi/repository/alabs-snapshot-local/</url>
         </repository>
         <repository>
             <id>central</id>
