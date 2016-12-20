@@ -16,6 +16,18 @@
         <cxf.version>3.1.6</cxf.version>
         <scanPath>org.saiku.reportviewer.server</scanPath> <!-- Root package to scan for services and generate blueprint.xml -->
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>utility</id>
+            <name>utility-releases</name>
+            <url>http://repo.meteorite.bi/repository/alabs-release-local/</url>
+        </repository>
+        <snapshotRepository>
+            <id>utility</id>
+            <name>utility-snapshots</name>
+            <url>http://repo.meteorite.bi/repository/alabs-snapshot-local/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <repositories>
         <!-- START: Pentaho repositories -->
