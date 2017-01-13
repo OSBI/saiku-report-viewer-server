@@ -12,6 +12,7 @@ RUN wget http://www-us.apache.org/dist/karaf/${KARAF_VERSION}/apache-karaf-${KAR
     sed -i 's/^\(felix\.fileinstall\.dir\s*=\s*\).*$/\1\/deploy/' /opt/karaf/etc/org.apache.felix.fileinstall-deploy.cfg
 
 COPY ./config/org.apache.karaf.features.cfg /opt/karaf/etc/
+COPY ./config/org.ops4j.pax.url.mvn.cfg /opt/karaf/etc/
 
 COPY ./config/feature.xml /deploy/
 
