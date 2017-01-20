@@ -63,7 +63,7 @@ public class ReportServerImpl implements ReportServer {
 
     /*
      * Those are some sample routes to provided PRPT files in order to ease the process of testing and demoing the
-      * Saiku Report Server.
+     * Saiku Report Server.
      */
     if (reportId.equals("test")) {
       report = ReportUtil.getAndFillReport(mgr, ReportServerImpl.class.getResource("/basic_sample.prpt"), info.getQueryParameters());
@@ -104,7 +104,18 @@ public class ReportServerImpl implements ReportServer {
 
   @Override
   public List<String> listUploadedFiles() throws Exception {
-    return FileUtil.listFileNames(getReportsRoot());
+    List<String> reports = FileUtil.listFileNames(getReportsRoot());
+
+    /*
+     * Adding some sample reports, just for test and demo purposes.
+     */
+    reports.add("test");
+    reports.add("test_data");
+    reports.add("test_params");
+    reports.add("test_image");
+    reports.add("demo");
+
+    return reports;
   }
 
   /**
