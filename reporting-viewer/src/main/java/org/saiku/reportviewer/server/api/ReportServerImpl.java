@@ -17,6 +17,7 @@ import org.saiku.reportviewer.server.util.FileUtil;
 import org.saiku.reportviewer.server.util.ReportUtil;
 
 import javax.activation.DataHandler;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
@@ -54,9 +55,7 @@ public class ReportServerImpl implements ReportServer {
     mgr.registerDefaults();
   }
 
-  @Override
-  public Response render(String reportId, String outputFormat, UriInfo info) throws Exception {
-    File outputFile = FileUtil.createTempFile(outputFormat);
+  private ReportExporter processReport(File outputFile, String reportId, String outputFormat, UriInfo info) throws Exception {
     OutputStream outputStream = new FileOutputStream(outputFile);
 
     MasterReport report = null;
@@ -87,11 +86,31 @@ public class ReportServerImpl implements ReportServer {
     ReportExporter exporter = getExporter(outputFormat);
     exporter.process(outputStream, report);
 
+    return exporter;
+  }
+
+  @Override
+  public Response render(String reportId, String outputFormat, UriInfo info) throws Exception {
+    File outputFile = FileUtil.createTempFile(outputFormat);
+    ReportExporter exporter = processReport(outputFile, reportId, outputFormat, info);
+
     Response.ResponseBuilder response = Response.ok(outputFile, exporter.getMediaType());
     response.header(CONTENT_DISPOSITION, ATTACHMENT_FILENAME + outputFile.getName());
 
     return response.build();
   }
+
+  @Override
+  public Response download(String reportId, String outputFormat, UriInfo info) throws Exception {
+    File outputFile = FileUtil.createTempFile(outputFormat);
+    ReportExporter exporter = processReport(outputFile, reportId, outputFormat, info);
+
+    Response.ResponseBuilder response = Response.ok(outputFile, new MediaType("application", "force-download"));
+    response.header(CONTENT_DISPOSITION, ATTACHMENT_FILENAME + outputFile.getName());
+
+    return response.build();
+  }
+
 
   private void setDataFactory(MasterReport report) {
   }
