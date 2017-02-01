@@ -19,8 +19,6 @@ Saiku Report Viewer Server is an OSGi module implementation capable of handling 
     - `cp feature/target/feature/feature.xml KARAF_HOME/deploy`
 5. At Karaf's console install Saiku Report Viewer Server feature:
     - `feature:install saiku-report-viewer-server`
-6. If everything worked correctly, you should be able to render a test report:
-    - Open on a browser: [http://localhost:8181/cxf/reportviewer/render/test.pdf](http://localhost:8181/cxf/reportviewer/render/test.pdf)
         - :warning: **Observation:** If you have this error **`Error executing command: Error`**, when you run the above command, it's necessary to make a change:
             - Open the file `KARAF_HOME/etc/org.ops4j.pax.url.mvn.cfg` and append the last block:
 
@@ -36,6 +34,8 @@ Saiku Report Viewer Server is an OSGi module implementation capable of handling 
                 http://repository.springsource.com/maven/bundles/external@id=spring-ebr-repository@snapshots@noreleases, \
                 http://nexus.pentaho.org/content/groups/omni/@id=pentaho@snapshots
                 ```
+6. If everything worked correctly, you should be able to render a test report:
+    - Open on a browser: [http://localhost:8181/cxf/reportviewer/render/test.pdf](http://localhost:8181/cxf/reportviewer/render/test.pdf)
 
 #### Service Endpoint Operations
 
