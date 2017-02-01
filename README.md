@@ -20,8 +20,8 @@ Saiku Report Viewer Server is an OSGi module implementation capable of handling 
 5. At Karaf's console install Saiku Report Viewer Server feature:
     - `feature:install saiku-report-viewer-server`
 6. If everything worked correctly, you should be able to render a test report:
-    - Open on a browser: http://localhost:8181/cxf/reportviewer/render/test.pdf
-        - **Observation:** If you have this error **`Error executing command: Error`**, when you run the above command, it's necessary to make a change.
+    - Open on a browser: [http://localhost:8181/cxf/reportviewer/render/test.pdf](http://localhost:8181/cxf/reportviewer/render/test.pdf)
+        - :warning: **Observation:** If you have this error **`Error executing command: Error`**, when you run the above command, it's necessary to make a change:
             - Open the file `KARAF_HOME/etc/org.ops4j.pax.url.mvn.cfg` and append the last block:
 
                 ```
@@ -43,7 +43,7 @@ Endpoint URL | HTTP Method | Parameters | Description
 -------------|:-------------:|------------|------------
 `/reportviewer/upload` | POST | PRPT File (multipart form data) | Uploads a PRPT file and assigns it a unique ID
 `/reportviewer/list` | GET | | Retrieves the uploaded files IDs
-`/reportviewer/render/{id}.{format}` | GET | PRPT ID and format (xls,pdf or html) | Process and exports the report to the desired format
+`/reportviewer/render/{id}.{format}` | GET | PRPT ID and format (XLS, PDF or HTML) | Process and exports the report to the desired format
 
 #### Important Note:
 
