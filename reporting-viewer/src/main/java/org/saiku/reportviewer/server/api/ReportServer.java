@@ -50,6 +50,22 @@ public interface ReportServer {
                 @Context UriInfo info) throws Exception;
 
   /**
+   * This method is responsible for rendering report definitions (fetching them, filling with data and
+   * exporting in the desired output format - xls, pdf or html) for download.
+   * @param reportId The report definition name (should be one contained on the /list method return).
+   * @param outputFormat The output format (xls, pdf or html).
+   * @param info The report parameters may be specified as HTTP query parameters, this object gathers them.
+   * @return It returns to the browser, the rendered report definition file with the specified output format.
+   * @throws Exception
+   */
+  @GET
+  @Path("/download/{id}.{format}")
+  @Produces("text/html")
+  Response download(@PathParam("id") String reportId, @PathParam("format") String outputFormat,
+                  @Context UriInfo info) throws Exception;
+
+
+  /**
    * This is a simple ping method to test if everything is working correctly.
    * @return A simple JSON object, containing a success status and a 'Hello World' message.
    */
