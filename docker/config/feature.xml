@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="saiku-report-viewer-development-SNAPSHOT">
+    <feature name="saiku-report-viewer-server" version="0.0.0.development-SNAPSHOT">
+        <feature prerequisite="false" dependency="false">pentaho</feature>
+        <bundle>mvn:org.saiku/saiku-report-viewer-server/development-SNAPSHOT</bundle>
+    </feature>
+    <feature name="google-guava" version="0.0.0">
+        <bundle dependency="true">wrap:mvn:com.google.guava/guava/19.0</bundle>
+    </feature>
+    <feature name="pentaho" version="0.0.0">
+        <feature prerequisite="false" dependency="false">google-guava</feature>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libloader/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libbase/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libserializer/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libformula/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libfonts/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libformat/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libxml/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/librepository/7.0-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-reporting" version="0.0.0">
+        <feature prerequisite="false" dependency="false">google-guava</feature>
+        <feature prerequisite="false" dependency="false">pentaho</feature>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-core/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-scripting/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-drill-down/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-cda/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-mondrian/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-olap4j/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-pmd/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-kettle/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-xpath/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-toc/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-wizard-core/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-legacy-charts/7.0-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-kettle" version="0.0.0">
+        <feature prerequisite="false" dependency="false">google-guava</feature>
+        <feature prerequisite="false" dependency="false">pentaho-reporting</feature>
+        <bundle dependency="true">wrap:mvn:pentaho-kettle/kettle-core/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-kettle/kettle-engine/7.0-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-mondrian" version="0.0.0">
+        <feature prerequisite="false" dependency="false">google-guava</feature>
+        <feature prerequisite="false" dependency="false">pentaho</feature>
+        <feature prerequisite="false" dependency="false">pentaho-reporting</feature>
+        <feature prerequisite="false" dependency="false">pentaho-kettle</feature>
+        <bundle dependency="true">wrap:mvn:pentaho/mondrian/3.2.0.13658</bundle>
+    </feature>
+</features>

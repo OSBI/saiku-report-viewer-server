@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="saiku-report-viewer-development-SNAPSHOT" xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.3.0">
+    <feature name="saiku-report-viewer-server" version="development-SNAPSHOT">
+        <feature>pentaho</feature>
+        <bundle>mvn:org.saiku/saiku-report-viewer-server/development-SNAPSHOT</bundle>
+    </feature>
+    <feature name="google-guava">
+        <bundle dependency="true">wrap:mvn:com.google.guava/guava/19.0</bundle>
+    </feature>
+    <feature name="pentaho">
+        <feature>google-guava</feature>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libloader/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libbase/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libserializer/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libformula/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libfonts/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libformat/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/libxml/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-library/librepository/7.0-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-reporting">
+        <feature>google-guava</feature>
+        <feature>pentaho</feature>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-core/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-scripting/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-drill-down/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-cda/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-mondrian/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-olap4j/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-pmd/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-kettle/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-xpath/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-classic-extensions-toc/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-wizard-core/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-reporting-engine/pentaho-reporting-engine-legacy-charts/7.0-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-kettle">
+        <feature>google-guava</feature>
+        <feature>pentaho-reporting</feature>
+        <bundle dependency="true">wrap:mvn:pentaho-kettle/kettle-core/7.0-SNAPSHOT</bundle>
+        <bundle dependency="true">wrap:mvn:pentaho-kettle/kettle-engine/7.0-SNAPSHOT</bundle>
+    </feature>
+    <feature name="pentaho-mondrian">
+        <feature>google-guava</feature>
+        <feature>pentaho</feature>
+        <feature>pentaho-reporting</feature>
+        <feature>pentaho-kettle</feature>
+        <bundle dependency="true">wrap:mvn:pentaho/mondrian/3.2.0.13658</bundle>
+    </feature>
+</features>
