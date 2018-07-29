@@ -8,11 +8,10 @@
 
     <modules>
         <module>reporting-viewer</module>
-        <module>feature</module>
     </modules>
 
     <properties>
-        <pentaho.version>7.0-SNAPSHOT</pentaho.version>
+        <pentaho.version>6.1.0.19-384</pentaho.version>
         <cxf.version>3.1.6</cxf.version>
         <scanPath>org.saiku.reportviewer.server</scanPath> <!-- Root package to scan for services and generate blueprint.xml -->
     </properties>
@@ -31,6 +30,11 @@
 
     <repositories>
         <!-- START: Pentaho repositories -->
+        <repository>
+            <id>pentaho-repo</id>
+            <name>pentaho-repo</name>
+            <url>https://public.nexus.pentaho.org/content/groups/omni/</url>
+        </repository>            
         <repository>
             <id>pentaho.resolve.repo</id>
             <url>http://nexus.pentaho.org/content/groups/omni/</url>
@@ -75,15 +79,6 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <!-- scope is runtime so the feature repo is listed in etc/org.apache.karaf.features.cfg file, and features will installed into the system directory -->
-            <groupId>org.apache.karaf.features</groupId>
-            <artifactId>standard</artifactId>
-            <version>4.0.3</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
     </dependencies>
 
     <!-- Build workflow definitions -->
