@@ -55,7 +55,7 @@ public class ReportServerImpl implements ReportServer {
     mgr.registerDefaults();
   }
 
-  private ReportExporter processReport(File outputFile, String reportId, String outputFormat, UriInfo info) throws Exception {
+  public ReportExporter processReport(File outputFile, String reportId, String outputFormat, UriInfo info) throws Exception {
     OutputStream outputStream = new FileOutputStream(outputFile);
 
     MasterReport report = null;
