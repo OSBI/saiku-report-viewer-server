@@ -7,11 +7,16 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <pentaho.version>TRUNK-SNAPSHOT</pentaho.version>
-        <pentaho.kettle.version>TRUNK-SNAPSHOT</pentaho.kettle.version>
+        <pentaho.version>7.0.0.6-95</pentaho.version>
+        <pentaho.kettle.version>8.2.0.0-224</pentaho.kettle.version>
     </properties>
 
     <repositories>
+        <repository>
+            <id>pentaho-omni</id>
+            <url>https://nexus.pentaho.org/content/groups/omni/</url>
+        </repository>
+
         <repository>
             <id>pentaho-third-party</id>
             <url>http://nexus.pentaho.org/content/repositories/proxied-3rd-party-releases/</url>
@@ -89,7 +94,7 @@
         <dependency>
             <groupId>pentaho</groupId>
             <artifactId>cpf-core</artifactId>
-            <version>TRUNK-SNAPSHOT</version>
+            <version>8.1.0.1-453</version>
         </dependency>
         <dependency>
             <groupId>pentaho</groupId>
